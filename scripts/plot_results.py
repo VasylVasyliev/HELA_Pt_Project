@@ -1,43 +1,30 @@
-import pandas as pd
 import matplotlib.pyplot as plt
+import pandas as pd
 import os
 
-# Path to the data and output
-# Путь к данным и выходному файлу
-data_path = os.path.expanduser('~/Documents/HELA_Pt_Project/results/docking_data.csv')
-output_path = os.path.expanduser('~/Documents/HELA_Pt_Project/results/comparison_plot.png')
+# Load docking data for EGFR analysis
+# Загрузка данных докинга для анализа EGFR
+data_path = 'results/docking_data.csv'
+df = pd.read_csv(data_path)
 
-def create_visual():
-    # Load docking results
-    # Загрузка результатов докинга
-    df = pd.read_csv(data_path)
-    
-    plt.figure(figsize=(10, 6))
-    
-    # Set different colors for different mutation sites
-    # Установка разных цветов для разных сайтов мутаций
-    bar_colors = ['#2E86C1', '#E67E22'] # Blue for Cys794, Orange for L858R
-    
-    bars = plt.bar(df['Mutation_Site'], df['Distance_Angstrom'], color=bar_colors)
-    
-    # Add a threshold line for biological activity (2.5 - 3.0 A)
-    # Добавление линии порога биологической активности (2.5 - 3.0 А)
-    plt.axhline(y=3.0, color='red', linestyle='--', label='Max Active Distance')
-    
-    plt.title('Platinum Docking Efficiency: Cys794 vs L858R', fontsize=14)
-    plt.xlabel('Mutation Site', fontsize=12)
-    plt.ylabel('Distance (Angstroms)', fontsize=12)
-    plt.legend()
-    
-    # Save the professional plot
-    # Сохранение профессионального графика
-    plt.savefig(output_path)
-    print(f"Professional plot saved at: {output_path}")
-    # Профессиональный график сохранен по адресу: {output_path}
+# Create a bar chart comparing HeLa vs Lung Cancer mutation
+# Создание столбчатой диаграммы: HeLa против мутации рака легких
+plt.figure(figsize=(8, 6))
+bars = plt.bar(df['Mutation'], df['Distance_Angstrom'], color=['#4CAF50', '#FF5252'])
 
-if __name__ == "__main__":
-    if os.path.exists(data_path):
-        create_visual()
-    else:
-        print("Data file not found. Run reset_data.py first.")
-        # Файл данных не найден. Сначала запустите reset_data.py.
+# Add a threshold line for stable binding (2.8 Å)
+# Добавление пороговой линии для стабильной связи (2.8 Å)
+plt.axhline(y=2.8, color='blue', linestyle='--', label='Optimal Binding (2.8 Å)')
+
+# Labeling the chart
+# Настройка подписей графика
+plt.title('EGFR Binding Affinity: Wild Type vs L858R Mutation')
+plt.xlabel('Protein Type')
+plt.ylabel('Distance (Å)')
+plt.ylim(0, 4)
+plt.legend()
+
+# Save the professional visualization
+# Сохранение профессиональной визуализации
+plt.savefig('results/egfr_comparison_plot.png')
+print("Analysis complete. Visualization saved to results/egfr_comparison_plot.png")
