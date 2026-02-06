@@ -1,21 +1,21 @@
-# DNA-Data-Science: HELA Platinum Project
+# HELA Platinum Project: EGFR Mutation Analysis
 
-Investigation of Platinum-based drug efficiency interacting with EGFR protein (1M17).
+Bioinformatics research project focused on platinum-based drug efficiency against EGFR mutations using Python 3.11 and PyMOL.
 
-## 🧬 Project Description
-This project automates molecular docking data analysis. We compare the stability of the platinum ligand binding with the wild-type protein (HeLa) and the mutant form (Lung Cancer).
+## 🧬 Research Overview
+Investigation of binding stability between platinum ligands and the EGFR protein (PDB: 1M17).
 
-## 📊 Research Results
-Based on manual measurements in PyMOL, the following data was obtained:
-- **Cys794 (HeLa Standard):** 2.8 Å — optimal distance for stable binding.
-- **L858R (Mutation):** 3.2 Å — critical increase in distance, reducing efficiency.
+## 📊 Key Results
+- **HeLa (Wild Type):** 2.8 Å — Stable interaction.
+- **L858R (Mutation):** 3.2 Å — Reduced binding affinity.
+- **T790M (Resistant):** 3.8 Å — Significant binding loss.
 
-## 💻 Tech Stack
-- **Python 3.11** (Pandas for data, Matplotlib for plotting)
-- **PyMOL** (Visualization and measurements)
-- **Git/GitHub** (Version control)
+## 💻 Technical Stack
+- **Python 3.13** (Pandas, Matplotlib)
+- **PyMOL** (Molecular Visualization)
+- **Git** (Version Control)
 
-## 🚀 How to Run
-1. Update data: `python3 scripts/reset_data.py`
-2. Plot results: `python3 scripts/plot_results.py`
-3. Generate report: `python3 scripts/generate_report.py`
+## 🚀 Quick Start
+```bash
+python3 scripts/plot_results.py
+```
