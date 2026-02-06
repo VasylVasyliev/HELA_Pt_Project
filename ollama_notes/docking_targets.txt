@@ -1,0 +1,6 @@
+Project: HELA_Pt_Project
+Protein: EGFR (1M17)
+Target 1 (Primary): CYS794 | SG | [18.079, 15.523, 66.796]
+Target 2 (Auxiliary): THR701 | OG1 | [26.55, -3.678, 43.24]
+Distance: ~26.4 Angstroms
+Recommended PtNP Size: 2.0 - 2.5 nm
